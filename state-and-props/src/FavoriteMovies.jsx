@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 
-const MoviesList = () => {
+const MoviesList = (props) => {
     // Initialize state with a list of movies
+    const  [movies,  setMovies] = useState(["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"])
+    const [description, setDescription] = useState(["Horror", "Action", "Comedy", "Romance", "Drama"])
+    
+    const [showingDescription, setShowingDescription] = useState(false)
+
+    const showDescription = () => {
+        setShowingDescription(true)
+    }
 
 
 
@@ -10,9 +18,11 @@ const MoviesList = () => {
 
     return (
         <div>
-            {/* Toggle view button */}
+            {!showingDescription}
             <ul>
-                {/* Map through the movies and display them */}
+                {movies.map((movie, index) => (
+                    <li key={index}>{movie}</li>
+                ))}
             </ul>
         </div>
     );
