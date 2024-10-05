@@ -1,9 +1,12 @@
-import UserProfile from "./UserProfile"
+import UserProfile from "./UserProfile";
 import MoviesList from "./FavoriteMovies";
+
 function App() {
-  return(
-    <MoviesList />,
-    <UserProfile />
+  return (
+    <>
+      <MoviesList />
+      <UserProfile />
+    </>
   );
 }
 
