@@ -3,7 +3,10 @@ class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = { name: 'Alex' };
-        this.changeName = this.changeName.bind(this)
+        this.changeName = this.changeName.bind(this) 
+        /*  was getting UserProfile.jsx:10  Uncaught TypeError: Cannot read properties of undefined (reading 'setState')
+            til i added the code above
+        */
     }
 
     // Incorrect function
