@@ -3,6 +3,7 @@ class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = { name: 'Alex' };
+        this.changeName = this.changeName.bind(this)
     }
 
     // Incorrect function
@@ -11,6 +12,9 @@ class UserProfile extends Component {
     }
 
     render() {
+
+        const name = this.state.name;
+
         return (
             <div>
                 <h1>User Profile</h1>
