@@ -2,13 +2,7 @@ import React, { useState } from "react";
 
 const MoviesList = () => {
   // List of movies and their descriptions
-  const [movies] = useState([
-    "Movie1",
-    "Movie2",
-    "Movie3",
-    "Movie4",
-    "Movie5",
-  ]);
+  const [movies, setMovies] = useState(["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"]);
   const [descriptions] = useState([
     "Description 1",
     "Description 2",
@@ -16,6 +10,8 @@ const MoviesList = () => {
     "Description 4",
     "Description 5",
   ]);
+
+  const [genre] = useState(["Horror", "Action", "Romance", "Drama", "Comedy"]);
 
   // State to store the visibility of the description for each movie (boolean for each movie)
   const [showingDescription, setShowingDescription] = useState(
@@ -29,10 +25,19 @@ const MoviesList = () => {
     setShowingDescription(updatedDescriptions); // Update the state with new values
   };
 
+  const handleRemoveMovie = (index) => {
+    setMovies((currentMovies) => currentMovies.filter((_, i) => i !== index));
+
+    setShowingDescription((currentShowing) =>
+      currentShowing.filter((_, i) => i !== index)
+    );
+  };
+
   return (
     <div>
       <ul>
         {/* Map through the movies and display each title */}
+
         {movies.map((movie, index) => (
           <li key={index}>
             {/* Clicking on the movie title toggles its description */}
@@ -44,6 +49,9 @@ const MoviesList = () => {
             </span>
             {/* Conditionally show the description if the specific movie's toggle is true */}
             {showingDescription[index] && ` - ${descriptions[index]}`}
+
+            <button onClick={() => handleRemoveMovie(index)}>Remove</button>
+
           </li>
         ))}
       </ul>
